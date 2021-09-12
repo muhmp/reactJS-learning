@@ -34,17 +34,7 @@ export default Table
 
 */
 
-//main component
-class Table extends Component {
-    render(){
-        return(
-            <table>
-                <TableHeader />
-                <TableBody />
-            </table>
-        )
-    }
-}
+
 
 /*Lesson 2 */
 
@@ -60,6 +50,7 @@ const TableHeader = () => {
     )
 }
 
+/*
 //body
 const TableBody = () => {
     return(
@@ -74,6 +65,47 @@ const TableBody = () => {
             </tr>
         </tbody>
     )
+}
+ */
+
+
+
+
+
+/*Lesson 3: Props 
+//table body
+const TableBody = () => {
+    return <tbody />
+}
+*/
+
+// Lesson 3 main component
+class Table extends Component {
+    render() {
+      const {characterData} = this.props //called using props
+  
+        return(
+            <table>
+                <TableHeader />
+                <TableBody characterData={characterData} />
+            </table>
+        )
+    }
+}
+ 
+
+//3.1 main component using props (advanced)
+//accessing the rows variabe
+const TableBody =(props) => { //accessing the row element (please pay attention at the value of the row and the parantheses)
+    const rows = props.characterData.map((row, index) => {
+        return( //accessing the row & access the header of name and job
+            <tr key={index}>
+                <td>{row.name}</td>
+                <td>{row.job}</td>
+            </tr>
+        )
+    })
+    return <tbody>{rows}</tbody>
 }
 
 export default Table
