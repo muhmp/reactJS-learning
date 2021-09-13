@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 
-/* Lesson 1
+/* Lesson 1: main component
 
 class Table extends Component{
     render(){//render method
@@ -36,9 +36,8 @@ export default Table
 
 
 
-/*Lesson 2 */
-
-//Header
+/*Lesson 2:Creating component of table head and body*/
+//Table Header
 const TableHeader = () => {
     return(
         <thead>
@@ -50,8 +49,8 @@ const TableHeader = () => {
     )
 }
 
-/*
-//body
+/* Lesson 2.1: Table body
+
 const TableBody = () => {
     return(
         <tbody>
@@ -68,26 +67,27 @@ const TableBody = () => {
 }
  */
 
-
-/*Lesson 3: Props 
+/*Lesson 2.2:simple way table body using return 
 //table body
 const TableBody = () => {
     return <tbody />
 }
 */
 
-// Lesson 3 table main component (parent component)
+
+
+/* Lesson 3: Props & table main component (parent component)*/
 const Table = (props) => {
-    const{characterData,removeCharacter} = props
-    return (
-        <table>
-            <TableHeader />
-            <TableHeader characterData={characterData} removeCharacter ={removeCharacter} />
-        </table>
-    )
+    const { characterData, removeCharacter } = props;
+        return (
+            <table>
+                <TableHeader />
+                <TableBody characterData={characterData} removeCharacter={removeCharacter} />
+            </table>
+        );
 }
 
-//3.1 main component using props (advanced)
+//Lesson 3.1 : main component using props (advanced)
 //accessing the rows variabe (Child component)
 const TableBody =(props) => { //accessing the row element (please pay attention at the value of the row and the parantheses)
     const rows = props.characterData.map((row, index) => {
